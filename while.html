@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let iteration = 0
+        while (iteration < 5) {
+            iteration ++;
+            nbr = prompt("choissisez un nombre")
+            console.log(`vous avez choisi le numéro : ${nbr}`);
+            console.log(`tour numéro : ${iteration} / 5`);
+        }
+    </script>
+    <script>
+        let fruits = ["banane", "Kiwi", "Marron", "fraise"];
+        for (let i = 0; i < fruits.length; i++) {
+            console.log(fruits[i]);
+        }
+
+        let monObjet = {
+            key : "value", 
+            prenom : "remi",
+            nom : "maximilien",
+        }
+
+        let tableau = ["string", 10, false];
+        let tableau2 = new Array ("String", true);
+        tableau.push("new string");
+    </script>
+</body>
+</html>

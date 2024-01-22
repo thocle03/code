@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        console.log("hello world !")
+        let nom = "Clerc";
+        let prenom = "thomas";
+        console.log(nom + " " + prenom);
+    </script>
+    <script>
+        let temperature;
+        temperature = prompt('Quelle est la température');
+        if(temperature <= 16){
+            console.log("il fait froid");
+            console.log(temperature);
+        }
+        else if (temperature > 16 && temperature <= 22){
+            console.log("modéré");
+            console.log(temperature);
+        }
+        else if (temperature > 22 && temperature <= 35){
+            console.log("il fait chaud");
+            console.log(temperature);
+        }
+        else if (temperature > 35){
+            console.log("il fait beaucoup trop chaud");
+            console.log(temperature);
+        }
+        else{
+            console.log("Tu n'as rentré une température ou elle est vide")
+        }
+
+
+        switch(temperature){
+            case 'cash!':
+                console.log("CASH!!!");
+            case '20' :
+                console.log("il fait moyen chaud")
+            case '28' :
+                console.log("il fait la temperature parfaite")
+                break;
+            default:
+                console.log(`ce n'est pas une bonne température ${temperature}.`);
+        }
+    </script>
+</body>
+</html>

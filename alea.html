@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let alea = Math.floor(Math.random() * 11);
+        console.log(alea);
+        let nbChoisi;
+        let tentaive = 0;
+
+        while (alea != nbChoisi && tentaive < 3){
+            nbChoisi = prompt("choissisez un nombre")
+            console.log(nbChoisi);
+            tentaive ++;
+        }
+        
+    </script>
+</body>
+</html>
