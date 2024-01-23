@@ -2,6 +2,7 @@ let product = ["banane", "aspirateur", "zebre", "telephone", "bouteille"];
 let price = [4, 8, 6, 898, 5];
 let money = prompt("Combien d'argent vous avez ?");
 let panier = [];
+console.log("vous avez injecté " + money + "$");
 function startShopping() {
 
     for (let i = 0; i < product.length; i++) {
@@ -32,6 +33,7 @@ function addProduct() {
         for (let numeroProduit = 0; numeroProduit < panier.length; numeroProduit++) {
             console.log("Produit n°" + (panier[numeroProduit] + 1) + " " + (product[panier[numeroProduit]]) + " " + price[panier[numeroProduit]] + " $");
         }
+        console.log("votre sold s'élève à " + money + "$");
     }
     ajoutArticle = prompt("Voulez vous encore ajouter un article au panier ?")
     if (ajoutArticle == "oui") {
@@ -60,7 +62,7 @@ function addProduct() {
     if (injectSold == "oui") {
         let newMoney = 0;
         newMoney = prompt("Combien d'argent vous voulez rajouter ?");
-        money = newMoney + money;
+        money -= -newMoney;
         console.log(money);
     }
     let removeSold = prompt("voulez vous enlever de l'argent ?");
