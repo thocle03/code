@@ -5,9 +5,37 @@ let panier = [];
 if (money != 0) {
     console.log("vous avez injecté " + money + "$");
 }
-else{
+else {
     console.log("Veillez mettre de l'argent afin de pouvoir effectuer des achats et acceder a votre panier");
 }
+let consulting = prompt("Voulez vous acceder à votre compte banquaire ?");
+do {
+    if (consulting == "oui") {
+        let consultSold = prompt("voulez vous consulter votre solde");
+        if (consultSold == "oui") {
+            console.log(money);
+        }
+        let injectSold = prompt("voulez vous remettre de l'argent ?");
+        if (injectSold == "oui") {
+            let newMoney = 0;
+            newMoney = prompt("Combien d'argent vous voulez rajouter ?");
+            money -= -newMoney;
+            console.log(money);
+        }
+        let removeSold = prompt("voulez vous enlever de l'argent ?");
+        if (removeSold == "oui") {
+            let oldMoney = 0;
+            oldMoney = prompt("Combien d'argent vous voulez enlever ?");
+            if (oldMoney - money > 0) {
+                money -= oldMoney;
+            }
+            console.log(money);
+        }
+        consulting = prompt("Voulez vous toujours acceder à votre compte banquaire ?");
+    }
+    
+} while (consulting == "oui");
+
 
 function startShopping() {
 
@@ -20,20 +48,20 @@ function startShopping() {
             addProduct();
         }
     }
-    else{
+    else {
         console.log("Tu n'as pas d'argent, tu ne peux donc rien ajouter a ton panier");
     }
-    
+
 }
 function addProduct() {
     let choiceProduct = prompt("entrez un numéro de produit a ajouter au panier");
     if (money > price[choiceProduct]) {
         panier.push(choiceProduct - 1);
     }
-    else{
+    else {
         console.log("tu n'as pas assez d'argent !");
     }
-    
+
     console.log("Votre panier");
     if (product[choiceProduct - 1] != "") {
         for (let numeroProduit = 0; numeroProduit < panier.length; numeroProduit++) {
@@ -45,7 +73,7 @@ function addProduct() {
     if (ajoutArticle == "oui") {
         addProduct();
     }
-    else{
+    else {
         let valider = prompt("voulez vous valider votre panier");
         if (valider == "oui") {
             let total = 0;
@@ -55,32 +83,14 @@ function addProduct() {
             console.log("Votre panier coûte au total : " + total + "$");
             money -= total;
             console.log("il vous reste :" + money + "$");
-            if (money>0) {
+            if (money > 0) {
                 startShopping();
             }
         }
     }
+    consulting = prompt("Voulez vous réacceder à votre compte ?");
 }
-let consultSold = prompt("voulez vous consulter votre solde");
-if (consultSold == "oui") {
-    console.log(money);
-}
-let injectSold = prompt("voulez vous remettre de l'argent ?");
-if (injectSold == "oui") {
-    let newMoney = 0;
-    newMoney = prompt("Combien d'argent vous voulez rajouter ?");
-    money -= -newMoney;
-    console.log(money);
-}
-let removeSold = prompt("voulez vous enlever de l'argent ?");
-if (removeSold == "oui") {
-    let oldMoney = 0;
-    oldMoney = prompt("Combien d'argent vous voulez enlever ?");
-    if (oldMoney - money > 0) {
-        money -= oldMoney;
-    }
-    console.log(money);
-}
+
 
 startShopping();
 
