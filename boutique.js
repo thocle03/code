@@ -60,24 +60,27 @@ function addProduct() {
             }
         }
     }
-    let consultSold = prompt("voulez vous consulter votre solde");
-    if (consultSold == "oui") {
-        console.log(money);
-    }
-    let injectSold = prompt("voulez vous remettre de l'argent ?");
-    if (injectSold == "oui") {
-        let newMoney = 0;
-        newMoney = prompt("Combien d'argent vous voulez rajouter ?");
-        money -= -newMoney;
-        console.log(money);
-    }
-    let removeSold = prompt("voulez vous enlever de l'argent ?");
-    if (removeSold == "oui") {
-        let oldMoney = 0;
-        oldMoney = prompt("Combien d'argent vous voulez enlever ?");
-        money -= oldMoney;
-        console.log(money);
-    }
 }
+let consultSold = prompt("voulez vous consulter votre solde");
+if (consultSold == "oui") {
+    console.log(money);
+}
+let injectSold = prompt("voulez vous remettre de l'argent ?");
+if (injectSold == "oui") {
+    let newMoney = 0;
+    newMoney = prompt("Combien d'argent vous voulez rajouter ?");
+    money -= -newMoney;
+    console.log(money);
+}
+let removeSold = prompt("voulez vous enlever de l'argent ?");
+if (removeSold == "oui") {
+    let oldMoney = 0;
+    oldMoney = prompt("Combien d'argent vous voulez enlever ?");
+    if (oldMoney - money > 0) {
+        money -= oldMoney;
+    }
+    console.log(money);
+}
+
 startShopping();
 
