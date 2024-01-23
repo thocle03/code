@@ -2,7 +2,13 @@ let product = ["banane", "aspirateur", "zebre", "telephone", "bouteille"];
 let price = [4, 8, 6, 898, 5];
 let money = prompt("Combien d'argent vous avez ?");
 let panier = [];
-console.log("vous avez injecté " + money + "$");
+if (money != 0) {
+    console.log("vous avez injecté " + money + "$");
+}
+else{
+    console.log("Veillez mettre de l'argent afin de pouvoir effectuer des achats et acceder a votre panier");
+}
+
 function startShopping() {
 
     for (let i = 0; i < product.length; i++) {
@@ -25,7 +31,7 @@ function addProduct() {
         panier.push(choiceProduct - 1);
     }
     else{
-        console.log("tu as pas la moula sale pauvre !!");
+        console.log("tu n'as pas assez d'argent !");
     }
     
     console.log("Votre panier");
@@ -33,7 +39,7 @@ function addProduct() {
         for (let numeroProduit = 0; numeroProduit < panier.length; numeroProduit++) {
             console.log("Produit n°" + (panier[numeroProduit] + 1) + " " + (product[panier[numeroProduit]]) + " " + price[panier[numeroProduit]] + " $");
         }
-        console.log("votre sold s'élève à " + money + "$");
+        console.log("votre solde s'élève à " + money + "$");
     }
     ajoutArticle = prompt("Voulez vous encore ajouter un article au panier ?")
     if (ajoutArticle == "oui") {
@@ -46,7 +52,7 @@ function addProduct() {
             for (let numeroPrix = 0; numeroPrix < panier.length; numeroPrix++) {
                 total += price[panier[numeroPrix]];
             }
-            console.log("Votre panier coute au total : " + total + "$");
+            console.log("Votre panier coûte au total : " + total + "$");
             money -= total;
             console.log("il vous reste :" + money + "$");
             if (money>0) {
