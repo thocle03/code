@@ -19,7 +19,7 @@ do {
         if (consultSold == "oui") {
             console.log(money + " €");
             want = prompt("Quelle type de monnaie?")
-            xhr.open('GET', `https://api.api-ninjas.com/v1/convertcurrency?want=€{want}&have=€{have}&amount=€{money}`, true);
+            xhr.open('GET', `https://api.api-ninjas.com/v1/convertcurrency?want=${want}&have=${have}&amount=${money}`, true);
             xhr.setRequestHeader('X-Api-Key', 'gFNcacKBJnQYcfqC2tiA0g==s71N5tTWrsyz1oUd');
             xhr.setRequestHeader('Content-Type', 'application/json');
             xhr.onload = function () {
@@ -35,7 +35,7 @@ do {
         if (injectSold == "oui") {
             let newMoney = 0;
             newMoney = prompt("Combien d'argent vous voulez rajouter ?");
-            money -= -newMoney;
+            money = parseInt(newMoney) + parseInt(money) ;
             console.log(money);
         }
         let removeSold = prompt("voulez vous enlever de l'argent ?");
@@ -106,7 +106,6 @@ function addProduct() {
     }
     consulting = prompt("Voulez vous réacceder à votre compte ?");
 }
-
 
 startShopping();
 
