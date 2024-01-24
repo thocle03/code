@@ -60,8 +60,10 @@
         console.log("Détails du super livre :");
         livre.afficherDetails();
 
-        livre.anneePublication = prompt("Quelle année le livre sortira");
-        
+        let newYear = prompt("Quelle année le livre sortira");
+        if (newYear > 2000) {
+            livre.anneePublication = newYear;
+        }
 
         console.log("Détails mis à jour du livre après modification de l'année de publication (retard de sortie) :");
         livre.afficherDetails();
