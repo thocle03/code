@@ -6,6 +6,53 @@ var xhr = new XMLHttpRequest();
 let want = "USD"
 let have = "EUR"
 
+document.addEventListener('DOMContentLoaded', getExchangeRates);
+
+function getExchangeRates() {
+    const apiKey = 'gFNcacKBJnQYcfqC2tiA0g==s71N5tTWrsyz1oUd';
+    const baseCurrency = 'USD';
+    const apiUrl = `https://open.er-api.com/v6/latest/${baseCurrency}?apikey=${apiKey}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => displayExchangeRates(data))
+        .catch(error => console.error('Erreur lors de la récupération des taux de change :', error));
+}
+
+function displayExchangeRates(data) {
+    let exchangeRates = document.getElementById('exchangeRates');
+    console.log('Taux de change actuels :');
+
+    const rates = data.rates;
+    for (const currency in rates) {
+        const rate = rates[currency];
+        exchangeRates += `${currency}: ${rate}`;
+
+    }
+    console.log(exchangeRates + " ");
+}
+
+function convertCurrency() {
+    const apiKey = 'YOUR_API_KEY';
+    const baseCurrency = 'EUR';
+    const targetCurrency = 'USD';
+    const apiUrl = `https://open.er-api.com/v6/latest/${baseCurrency}?apikey=${apiKey}`;
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(data => {
+            const exchangeRate = data.rates[targetCurrency];
+            const amountInDollars = money * exchangeRate;
+            displayResult(money, amountInDollars, targetCurrency);
+        })
+        .catch(error => console.error('Erreur lors de la conversion de la devise :', error));
+}
+function displayResult(money, amountInDollars, targetCurrency) {
+    
+    let moneyDollars = 0;
+    moneyDollars = console.log(money + ' euros équivalent à environ ' + amountInDollars + targetCurrency);
+    
+}
 if (money != 0) {
     console.log("vous avez injecté " + money + "€");
 }
@@ -35,7 +82,7 @@ do {
         if (injectSold == "oui") {
             let newMoney = 0;
             newMoney = prompt("Combien d'argent vous voulez rajouter ?");
-            money = parseInt(newMoney) + parseInt(money) ;
+            money = parseInt(newMoney) + parseInt(money);
             console.log(money);
         }
         let removeSold = prompt("voulez vous enlever de l'argent ?");
@@ -49,7 +96,7 @@ do {
         }
         consulting = prompt("Voulez vous toujours acceder à votre compte banquaire ?");
     }
-    
+
 } while (consulting == "oui");
 
 
@@ -108,4 +155,4 @@ function addProduct() {
 }
 
 startShopping();
-
+convertCurrency();

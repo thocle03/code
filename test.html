@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ma page</title>
+</head>
+
+<body>
+    <h1>Conversion d'argent</h1>
+    <label for="money">Montant en euros :</label>
+    <input type="number" id="money" placeholder="Entrez le montant en euros">
+    <button onclick="convertCurrency()">Convertir en dollars</button>
+    <div id="result"></div>
+
+    <script>
+        function convertCurrency() {
+            const moneyElement = document.getElementById('money');
+            const amountInEuros = parseFloat(moneyElement.value);
+
+            if (isNaN(amountInEuros)) {
+                alert('Veuillez entrer un montant valide en euros.');
+                return;
+            }
+
+            const apiKey = 'YOUR_API_KEY';
+            const baseCurrency = 'EUR'; // Monnaie de base (euros)
+            const targetCurrency = 'USD'; // Monnaie cible (dollars)
+            const apiUrl = `https://open.er-api.com/v6/latest/${baseCurrency}?apikey=${apiKey}`;
+
+            fetch(apiUrl)
+                .then(response => response.json())
+                .then(data => {
+                    const exchangeRate = data.rates[targetCurrency];
+                    const amountInDollars = amountInEuros * exchangeRate;
+                    displayResult(amountInEuros, amountInDollars, targetCurrency);
+                })
+                .catch(error => console.error('Erreur lors de la conversion de la devise :', error));
+        }
+
+        function displayResult(amountInEuros, amountInDollars, targetCurrency) {
+            const resultElement = document.getElementById('result');
+            resultElement.innerHTML = `<p>${amountInEuros} euros équivalent à environ ${amountInDollars.toFixed(2)} ${targetCurrency}.</p>`;
+        }
+    </script>
+    <script>
+        let livre = {
+            titre: "Le js pour les nuls",
+            auteur: "Thomas Clerc",
+            anneePublication: 2028,
+
+            afficherDetails: function () {
+                console.log("Titre: " + this.titre);
+                console.log("Auteur: " + this.auteur);
+                console.log("Année de publication: " + this.anneePublication);
+            }
+        };
+
+        console.log("Détails du super livre :");
+        livre.afficherDetails();
+
+        livre.anneePublication = prompt("Quelle année le livre sortira");
+        
+
+        console.log("Détails mis à jour du livre après modification de l'année de publication (retard de sortie) :");
+        livre.afficherDetails();
+
+    </script>
+</body>
+
+</html>
