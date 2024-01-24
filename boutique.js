@@ -48,10 +48,10 @@ function convertCurrency() {
         .catch(error => console.error('Erreur lors de la conversion de la devise :', error));
 }
 function displayResult(money, amountInDollars, targetCurrency) {
-    
+
     let moneyDollars = 0;
     moneyDollars = console.log(money + ' euros équivalent à environ ' + amountInDollars + targetCurrency);
-    
+
 }
 if (money != 0) {
     console.log("vous avez injecté " + money + "€");
@@ -62,7 +62,7 @@ else {
 let consulting = prompt("Voulez vous acceder à votre compte banquaire ?");
 do {
     if (consulting == "oui") {
-        let consultSold = prompt("voulez vous consulter votre solde");
+        let consultSold = prompt("voulez vous changer votre argent en dollars");
         if (consultSold == "oui") {
             console.log(money + " €");
             want = prompt("Quelle type de monnaie?")
@@ -155,4 +155,6 @@ function addProduct() {
 }
 
 startShopping();
-convertCurrency();
+if (consulting == "oui") {
+    convertCurrency();
+}
